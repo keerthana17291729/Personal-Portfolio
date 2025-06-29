@@ -352,7 +352,7 @@ body {
 
 .project-card h3 {
     font-size: 1.6rem;
-    color: var(--text-color);
+    color: var(--primary-color);
     margin-bottom: 0.8rem;
 }
 
@@ -367,6 +367,8 @@ body {
 .project-buttons-container {
     text-align: center;
     margin-top: auto;
+    justify-content: space-around;
+    padding-bottom: 20px;
 }
 
 .project-link {
@@ -381,6 +383,7 @@ body {
     gap: 0.5rem;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 .project-link:hover {
     background-color: #0097a7;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaGithub } from 'react-icons/fa';
+import { Fa0, FaWebAwesome, FaWebflow } from 'react-icons/fa6';
 
 const Projects = () => {
   return (
@@ -15,7 +16,11 @@ const Projects = () => {
             View Code <FaGithub />
           </a>
         </div>
-        
+        <div className="project-buttons-container">
+          <a href="https://recipe-hub-k.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn project-link">
+            View Website
+          </a>
+        </div>
       </div>
     </section>
   );
