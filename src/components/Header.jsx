@@ -42,7 +42,7 @@ const Header = () => {
       <div className="navbar-container">
         <div className="portfolio-name">
           <a href="#home" className="portfolio-link" onClick={(e) => handleNavLinkClick(e, 'home')}>
-            Keerthana's Portfolio
+            KEERTHANA
           </a>
         </div>
         <nav className="navbar-links">
