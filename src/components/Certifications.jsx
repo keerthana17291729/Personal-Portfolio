@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { FaAward, FaExternalLinkAlt } from 'react-icons/fa';
 
 const Certifications = () => {

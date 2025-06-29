@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaCertificate, FaCogs, FaExternalLinkAlt } from 'react-icons/fa';
 
 const Achievements = () => {

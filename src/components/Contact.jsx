@@ -4,7 +4,7 @@ import { FaPhone, FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
-    email: '', // Changed to 'email'
+    email: '', 
     message: '',
   });
   const [status, setStatus] = useState('');

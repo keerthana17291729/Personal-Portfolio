@@ -28,10 +28,6 @@ const Skills = () => {
           <p>JavaScript</p>
         </div>
         <div className="skill-item">
-          <FaReact className="skill-icon" /> 
-          <p>React Js</p>
-        </div>
-        <div className="skill-item">
           <FaDatabase className="skill-icon" />
           <p>MySQL</p>
         </div>
