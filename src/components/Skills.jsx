@@ -28,10 +28,6 @@ const Skills = () => {
           <p>JavaScript</p>
         </div>
         <div className="skill-item">
-          <FaDatabase className="skill-icon" />
-          <p>MySQL</p>
-        </div>
-        <div className="skill-item">
           <FaLightbulb className="skill-icon" />
           <p>Logical Thinking</p>
         </div>
