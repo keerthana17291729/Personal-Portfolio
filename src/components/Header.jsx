@@ -51,6 +51,7 @@ const Header = () => {
           <a href="#education" className={`nav-link ${activeLink === 'education' ? 'active' : ''}`} onClick={(e) => handleNavLinkClick(e, 'education')}>Education</a>
           <a href="#skills" className={`nav-link ${activeLink === 'skills' ? 'active' : ''}`} onClick={(e) => handleNavLinkClick(e, 'skills')}>Skills</a>
           <a href="#projects" className={`nav-link ${activeLink === 'projects' ? 'active' : ''}`} onClick={(e) => handleNavLinkClick(e, 'projects')}>Projects</a>
+          <a href="#experience" className={`nav-link ${activeLink === 'experience' ? 'active' : ''}`} onClick={(e) => handleNavLinkClick(e, 'experience')}>Experience</a>
           <a href="#certifications" className={`nav-link ${activeLink === 'certifications' ? 'active' : ''}`} onClick={(e) => handleNavLinkClick(e, 'certifications')}>Certifications</a>
           <a href="#achievements" className={`nav-link ${activeLink === 'achievements' ? 'active' : ''}`} onClick={(e) => handleNavLinkClick(e, 'achievements')}>Achievements</a>
           <a href="#contact" className={`nav-link ${activeLink === 'contact' ? 'active' : ''}`} onClick={(e) => handleNavLinkClick(e, 'contact')}>Contact</a>

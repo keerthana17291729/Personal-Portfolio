@@ -391,6 +391,32 @@ body {
     box-shadow: 0 4px 10px rgba(0, 188, 212, 0.4);
 }
 
+.experience-card {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem auto;
+    max-width: 800px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.experience-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.experience-company {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.experience-details {
+    margin-bottom: 1.5rem;
+    color: #ccc;
+}
+
+
 .certifications-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
