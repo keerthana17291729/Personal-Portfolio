@@ -1,63 +1,108 @@
-import { useState, useEffect } from 'react';
+
+import { useState, useEffect, useCallback } from 'react';
+
+const navLinks = [
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'education', label: 'Education' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'certifications', label: 'Certifications' },
+  { id: 'achievements', label: 'Achievements' },
+  { id: 'contact', label: 'Contact' }
+];
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState('home');
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll('section[id]');
-      let currentActive = 'home';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100; 
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-          currentActive = section.id;
-        }
-      });
-      setActiveLink(currentActive);
-    };
+  const handleScroll = useCallback(() => {
+    const sections = document.querySelectorAll('section[id]');
+    const scrollPosition = window.scrollY + 120;
+    let currentActive = 'home';
 
-    window.addEventListener('scroll', handleScroll);
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-      setActiveLink(hash);
-      const targetElement = document.getElementById(hash);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
+    sections.forEach((section) => {
+      const sectionTop =
+        section.getBoundingClientRect().top + window.scrollY;
+      const sectionBottom = sectionTop + section.offsetHeight;
+
+      if (
+        scrollPosition >= sectionTop &&
+        scrollPosition < sectionBottom
+      ) {
+        currentActive = section.id;
       }
+    });
+
+    setActiveLink(currentActive);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    const hash = window.location.hash.substring(1);
+
+    if (hash) {
+      const targetElement = document.getElementById(hash);
+
+      if (targetElement) {
+        setActiveLink(hash);
+        requestAnimationFrame(() => {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+    } else {
+      handleScroll();
     }
 
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []); 
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll]);
 
-  const handleNavLinkClick = (e, id) => {
-    e.preventDefault();
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  const handleNavLinkClick = (event, id) => {
+    event.preventDefault();
+
+    const targetElement = document.getElementById(id);
+
+    if (!targetElement) return;
+
     setActiveLink(id);
     window.history.pushState(null, '', `#${id}`);
+    targetElement.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <header className="header">
       <div className="navbar-container">
         <div className="portfolio-name">
-          <a href="#home" className="portfolio-link" onClick={(e) => handleNavLinkClick(e, 'home')}>
+          <a
+            href="#home"
+            className="portfolio-link"
+            onClick={(event) => handleNavLinkClick(event, 'home')}
+          >
             KEERTHANA
           </a>
         </div>
-        <nav className="navbar-links">
-          <a href="#home" className={`nav-link ${activeLink === 'home' ? 'active' : ''}`} onClick={(e) => handleNavLinkClick(e, 'home')}>Home</a>
-          <a href="#about" className={`nav-link ${activeLink === 'about' ? 'active' : ''}`} onClick={(e) => handleNavLinkClick(e, 'about')}>About</a>
-          <a href="#education" className={`nav-link ${activeLink === 'education' ? 'active' : ''}`} onClick={(e) => handleNavLinkClick(e, 'education')}>Education</a>
-          <a href="#skills" className={`nav-link ${activeLink === 'skills' ? 'active' : ''}`} onClick={(e) => handleNavLinkClick(e, 'skills')}>Skills</a>
-          <a href="#projects" className={`nav-link ${activeLink === 'projects' ? 'active' : ''}`} onClick={(e) => handleNavLinkClick(e, 'projects')}>Projects</a>
-          <a href="#experience" className={`nav-link ${activeLink === 'experience' ? 'active' : ''}`} onClick={(e) => handleNavLinkClick(e, 'experience')}>Experience</a>
-          <a href="#certifications" className={`nav-link ${activeLink === 'certifications' ? 'active' : ''}`} onClick={(e) => handleNavLinkClick(e, 'certifications')}>Certifications</a>
-          <a href="#achievements" className={`nav-link ${activeLink === 'achievements' ? 'active' : ''}`} onClick={(e) => handleNavLinkClick(e, 'achievements')}>Achievements</a>
-          <a href="#contact" className={`nav-link ${activeLink === 'contact' ? 'active' : ''}`} onClick={(e) => handleNavLinkClick(e, 'contact')}>Contact</a>
+
+        <nav className="navbar-links" aria-label="Main navigation">
+          {navLinks.map(({ id, label }) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              className={`nav-link ${
+                activeLink === id ? 'active' : ''
+              }`}
+              onClick={(event) => handleNavLinkClick(event, id)}
+              aria-current={activeLink === id ? 'location' : undefined}
+            >
+              {label}
+            </a>
+          ))}
         </nav>
       </div>
     </header>
   );
 };
+
 export default Header;

@@ -723,3 +723,432 @@ body {
         font-size: 1.8rem;
     }
 }
+
+/* Portfolio content layout updates: retain the existing theme and card styling. */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+.projects-grid .project-card {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    margin: 0;
+    padding: 1.25rem;
+}
+
+.projects-grid .project-image {
+    width: 100%;
+    height: 155px;
+    object-fit: cover;
+}
+
+.project-image-placeholder {
+    width: 100%;
+    height: 155px;
+    margin: 0 auto 1.2rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--card-background), #111);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.project-tech {
+    color: var(--primary-color) !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    max-width: 1300px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+.experience-grid .experience-card {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.experience-grid .experience-details {
+    flex-grow: 1;
+}
+
+.experience-period {
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.achievements-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    max-width: 1400px;
+    align-items: stretch;
+}
+
+.achievement-item {
+    max-width: none;
+    min-width: 0;
+    padding: 1.5rem;
+}
+
+.achievement-item:nth-child(3) {
+    grid-column: auto;
+    margin-top: 0;
+}
+
+.achievement-item h3 {
+    font-size: 1.2rem;
+}
+
+.achievement-year {
+    flex-grow: 1;
+}
+
+@media (max-width: 1200px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .achievements-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .experience-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .achievements-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid,
+    .experience-grid,
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+    .projects-grid .project-image,
+    .project-image-placeholder {
+        height: 200px;
+    }
+}
+
+
+/* ==========================================
+   PROJECTS & ACHIEVEMENTS CAROUSEL
+   Preserves the existing portfolio theme
+   ========================================== */
+
+.portfolio-carousel {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.portfolio-carousel-viewport {
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.portfolio-carousel-track {
+    display: grid;
+    grid-template-columns: repeat(var(--carousel-visible, 3), minmax(0, 1fr));
+    gap: 1.25rem;
+    width: 100%;
+    align-items: stretch;
+}
+
+.portfolio-carousel-track .carousel-card {
+    min-width: 0;
+    width: 100%;
+    max-width: none;
+    min-height: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    animation: carouselCardEnter 0.25s ease;
+}
+
+.portfolio-carousel-track .project-card {
+    padding: 1.25rem;
+}
+
+.portfolio-carousel-track .project-card h3 {
+    overflow-wrap: anywhere;
+}
+
+.portfolio-carousel-track .project-card p {
+    overflow-wrap: anywhere;
+}
+
+.portfolio-carousel-track .project-image {
+    width: 100%;
+    height: 234px;
+    object-fit: contain;
+    background-color: #111111;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.portfolio-carousel-track .project-tech {
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+.portfolio-carousel-track .project-buttons-container {
+    margin-top: 0.75rem;
+}
+
+.portfolio-carousel-track .achievement-item {
+    justify-content: flex-start;
+    padding: 1.5rem 1rem;
+}
+
+.portfolio-carousel-track .achievement-item:nth-child(3) {
+    grid-column: auto;
+    margin-top: 0;
+}
+
+.portfolio-carousel-track .achievement-item h3 {
+    font-size: 1.15rem;
+    overflow-wrap: anywhere;
+}
+
+.portfolio-carousel-track .achievement-year {
+    margin-bottom: 1rem;
+}
+
+.portfolio-carousel-track .achievement-view-btn {
+    margin-top: auto;
+}
+
+.carousel-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    background-color: var(--card-background);
+    color: var(--primary-color);
+    font-size: 1.15rem;
+    cursor: pointer;
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+.carousel-arrow:hover:not(:disabled) {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    transform: scale(1.08);
+}
+
+.carousel-arrow:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+}
+
+.carousel-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.carousel-position {
+    margin-top: 1.25rem;
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+@keyframes carouselCardEnter {
+    from {
+        opacity: 0.5;
+        transform: translateX(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Tablet: display two cards at a time */
+@media (max-width: 1000px) {
+    .portfolio-carousel {
+        grid-template-columns: 36px minmax(0, 1fr) 36px;
+        gap: 0.5rem;
+    }
+
+    .carousel-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+
+    .portfolio-carousel-track {
+        gap: 1rem;
+    }
+
+    .portfolio-carousel-track .project-card {
+        padding: 1rem;
+    }
+
+    .portfolio-carousel-track .project-card h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Mobile: display one card at a time */
+@media (max-width: 600px) {
+    .portfolio-carousel {
+        grid-template-columns: 30px minmax(0, 1fr) 30px;
+        gap: 0.35rem;
+    }
+
+    .carousel-arrow {
+        width: 30px;
+        height: 30px;
+        font-size: 0.85rem;
+    }
+
+    .portfolio-carousel-track {
+        gap: 0.75rem;
+    }
+
+    .portfolio-carousel-track .project-card {
+        padding: 1rem;
+    }
+
+    .portfolio-carousel-track .project-image {
+        height: 190px;
+    }
+
+    .portfolio-carousel-track .achievement-item {
+        padding: 1.5rem 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .portfolio-carousel-track .carousel-card {
+        animation: none;
+    }
+
+    .carousel-arrow {
+        transition: none;
+    }
+}
+
+
+/* Certifications and Experience carousel cards */
+.portfolio-carousel-track .certification-item,
+.portfolio-carousel-track .experience-card {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    min-height: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.portfolio-carousel-track .certification-item {
+    padding: 1.5rem 1.25rem;
+}
+
+.portfolio-carousel-track .certification-item h3 {
+    font-size: 1.3rem;
+    color: var(--text-color);
+    margin-bottom: 0.75rem;
+    overflow-wrap: anywhere;
+}
+
+.portfolio-carousel-track .certification-item p {
+    color: #b0b0b0;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    overflow-wrap: anywhere;
+}
+
+.portfolio-carousel-track .certification-item .view-cert-btn {
+    margin-top: auto;
+    align-self: center;
+}
+
+.portfolio-carousel-track .experience-card {
+    padding: 1.75rem 1.25rem;
+}
+
+.portfolio-carousel-track .experience-card h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    overflow-wrap: anywhere;
+}
+
+.portfolio-carousel-track .experience-company {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    overflow-wrap: anywhere;
+}
+
+.portfolio-carousel-track .experience-period {
+    margin-bottom: 1rem;
+}
+
+.portfolio-carousel-track .experience-details {
+    flex-grow: 1;
+    margin-bottom: 0;
+    color: #ccc;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 1000px) {
+    .portfolio-carousel-track .certification-item,
+    .portfolio-carousel-track .experience-card {
+        padding: 1.25rem 1rem;
+    }
+
+    .portfolio-carousel-track .certification-item h3,
+    .portfolio-carousel-track .experience-card h3 {
+        font-size: 1.15rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .portfolio-carousel-track .certification-item,
+    .portfolio-carousel-track .experience-card {
+        padding: 1.5rem 1rem;
+    }
+}
